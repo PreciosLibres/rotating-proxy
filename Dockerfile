@@ -1,13 +1,9 @@
-FROM ubuntu:14.04
-MAINTAINER Matthias Kadenbach <matthias.kadenbach@gmail.com>
+FROM resin/rpi-raspbian
+MAINTAINER Diego Peralta <diego.peralta.dev@gmail.com>
 
-RUN echo 'deb http://deb.torproject.org/torproject.org trusty main' | tee /etc/apt/sources.list.d/torproject.list
+RUN echo 'deb http://deb.torproject.org/torproject.org jessie main' | tee /etc/apt/sources.list.d/torproject.list
 RUN gpg --keyserver keys.gnupg.net --recv 886DDD89
 RUN gpg --export A3C4F0F979CAA22CDBA8F512EE8CBC9E886DDD89 | apt-key add -
-
-RUN echo 'deb http://ppa.launchpad.net/brightbox/ruby-ng/ubuntu trusty main' | tee /etc/apt/sources.list.d/ruby.list
-RUN gpg --keyserver keyserver.ubuntu.com --recv C3173AA6
-RUN gpg --export 80f70e11f0f0d5f10cb20e62f5da5f09c3173aa6 | apt-key add -
 
 RUN apt-get update && \
     apt-get install -y tor polipo haproxy ruby2.1 libssl-dev wget curl build-essential zlib1g-dev libyaml-dev libssl-dev && \
