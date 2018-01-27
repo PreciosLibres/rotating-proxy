@@ -260,7 +260,7 @@ end
 
 haproxy.start
 
-sleep 60
+sleep 10
 
 loop do
   $logger.info "resetting circuits"
@@ -275,6 +275,6 @@ loop do
     proxy.restart unless proxy.working?
   end
 
-  $logger.info "sleeping for 60 seconds"
-  sleep 60
+  $logger.info "sleeping for 10 seconds"
+  sleep 10
 end
